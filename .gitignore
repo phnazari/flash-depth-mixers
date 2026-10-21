@@ -15,6 +15,10 @@ __pycache__/
 /data/
 /checkpoints/
 /wandb/
+/legacy/.cache/
+/legacy/data/
+/legacy/checkpoints/
+/legacy/wandb/
 /*.ptx
 /*.cubin
 

@@ -91,7 +91,7 @@ then `mhc_pre_big_fuse`) as one traceable op (`olmo_mhc::pre_inference` in `nn/m
 compiled block has no graph break around the TileLang calls. This applies to both prompt
 processing and single-token inference. `HyperConnectionsConfig.upstream_inference_projection`
 selects upstream's one-split projection at every token count (the `mhc_upstream` arm of
-`paper-experiments/throughput`); by default no-grad forwards use the tuned split count above. After a checkpoint is
+`legacy/paper-experiments/throughput`); by default no-grad forwards use the tuned split count above. After a checkpoint is
 loaded, `hyper_connections.prepare_inference` folds each controller's RMS weight into its
 projection and rounds it to TF32 once, with upstream's merge kernel and `round_to_tf32`, so no-grad
 forwards skip the per-call merge and rounding (`mhc_pre_big_fuse(..., fn_rounded=True)`; the model is

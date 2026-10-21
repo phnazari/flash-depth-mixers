@@ -5,7 +5,7 @@
 
 ``--size`` picks the paper's backbones (400m Llama-like, 1p5b Qwen3-like) with each method's paper
 settings. ``--override key=value`` changes any config field, e.g. a kernel mode. This measures the
-HF models; the paper's throughput numbers come from ``paper-experiments/throughput`` on OLMo-core.
+HF models; the paper's throughput numbers come from ``legacy/paper-experiments/throughput`` on OLMo-core.
 """
 
 from __future__ import annotations

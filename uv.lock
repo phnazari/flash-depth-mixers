@@ -41,7 +41,7 @@ wheels = [
 
 [[package]]
 name = "ai2-olmo-core"
-source = { editable = "pretrain/OLMo-core" }
+source = { editable = "legacy/pretrain/OLMo-core" }
 dependencies = [
     { name = "bettermap" },
     { name = "cached-path" },
@@ -532,27 +532,17 @@ wheels = [
 [[package]]
 name = "depth-mixer"
 source = { editable = "." }
-default-groups = ["dev", "eval"]
+default-groups = ["dev", "eval", "legacy"]
 dependencies = [
-    { name = "ai2-olmo-core", extra = ["fla"] },
     { name = "cuda-python" },
-    { name = "datasets" },
-    { name = "flash-attn-4" },
-    { name = "liger-kernel" },
-    { name = "matplotlib" },
+    { name = "flash-linear-attention" },
     { name = "numpy" },
     { name = "nvidia-cutlass-dsl", extra = ["cu13"] },
     { name = "packaging" },
-    { name = "pyarrow" },
-    { name = "quack-kernels" },
-    { name = "rich" },
-    { name = "seaborn" },
     { name = "setuptools" },
     { name = "tilelang" },
     { name = "torch" },
-    { name = "tqdm" },
     { name = "transformers" },
-    { name = "wandb" },
 ]
 
 [package.dev-dependencies]
@@ -564,31 +554,34 @@ eval = [
     { name = "accelerate" },
     { name = "lm-eval" },
 ]
+legacy = [
+    { name = "ai2-olmo-core", extra = ["fla"] },
+    { name = "datasets" },
+    { name = "flash-attn-4" },
+    { name = "liger-kernel" },
+    { name = "matplotlib" },
+    { name = "pyarrow" },
+    { name = "quack-kernels" },
+    { name = "rich" },
+    { name = "seaborn" },
+    { name = "tqdm" },
+    { name = "wandb" },
+]
 moe = [
     { name = "grouped-gemm" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "ai2-olmo-core", extras = ["fla"], editable = "pretrain/OLMo-core" },
     { name = "cuda-python", marker = "sys_platform == 'linux'", specifier = "==13.3.1" },
-    { name = "datasets", specifier = "==3.6.0" },
-    { name = "flash-attn-4", marker = "sys_platform == 'linux'", specifier = "==4.0.0b28" },
-    { name = "liger-kernel", specifier = "==0.8.2" },
-    { name = "matplotlib", specifier = "==3.10.9" },
+    { name = "flash-linear-attention", specifier = "==0.5.0" },
     { name = "numpy", specifier = "==2.4.4" },
     { name = "nvidia-cutlass-dsl", extras = ["cu13"], marker = "sys_platform == 'linux'", specifier = "==4.6.2" },
     { name = "packaging", specifier = ">=21.0.0" },
-    { name = "pyarrow", specifier = "==24.0.0" },
-    { name = "quack-kernels", marker = "sys_platform == 'linux'", specifier = "==0.6.4" },
-    { name = "rich", specifier = "==13.9.4" },
-    { name = "seaborn", specifier = "==0.13.2" },
     { name = "setuptools", specifier = "<81.0.0" },
     { name = "tilelang", specifier = "==0.1.14" },
     { name = "torch", specifier = "==2.12.0" },
-    { name = "tqdm", specifier = "==4.67.3" },
     { name = "transformers", specifier = "==5.9.0" },
-    { name = "wandb", specifier = "==0.27.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -599,6 +592,19 @@ dev = [
 eval = [
     { name = "accelerate", specifier = ">=1.0" },
     { name = "lm-eval", specifier = "==0.4.12" },
+]
+legacy = [
+    { name = "ai2-olmo-core", extras = ["fla"], editable = "legacy/pretrain/OLMo-core" },
+    { name = "datasets", specifier = "==3.6.0" },
+    { name = "flash-attn-4", marker = "sys_platform == 'linux'", specifier = "==4.0.0b28" },
+    { name = "liger-kernel", specifier = "==0.8.2" },
+    { name = "matplotlib", specifier = "==3.10.9" },
+    { name = "pyarrow", specifier = "==24.0.0" },
+    { name = "quack-kernels", marker = "sys_platform == 'linux'", specifier = "==0.6.4" },
+    { name = "rich", specifier = "==13.9.4" },
+    { name = "seaborn", specifier = "==0.13.2" },
+    { name = "tqdm", specifier = "==4.67.3" },
+    { name = "wandb", specifier = "==0.27.0" },
 ]
 moe = [{ name = "grouped-gemm", git = "https://github.com/tgale96/grouped_gemm.git?rev=f1429a3c44c98f7912aa4b00125144cdf4e7fdb2" }]
 

@@ -2,7 +2,7 @@
 tuned/sm<arch>.json, the table `pre_big_fuse.projection_splits` reads.
 
 For each width and token count (decode batches up to the largest prefill of
-paper-experiments/throughput), every split count the kernel accepts runs the no-grad pre path as a model prepared for
+legacy/paper-experiments/throughput), every split count the kernel accepts runs the no-grad pre path as a model prepared for
 inference calls it (`mhc_pre_big_fuse` with the projection rounded at load: the projection kernel,
 then the fused kernel). The calls are timed in a CUDA graph that cycles through distinct
 projections, enough (with the streams) to exceed twice the L2 cache, so each call reads its

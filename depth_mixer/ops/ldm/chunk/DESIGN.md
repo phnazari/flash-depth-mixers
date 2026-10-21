@@ -1,7 +1,7 @@
 # Chunked LDM state (`chunk` mode)
 
 The LDM state kernels of the paper's main runs (the `fast` backend of the paper code in
-`pretrain/OLMo-core/src/olmo_core/nn/ldm/backends/fast`): the windowed state with a taped backward.
+`legacy/pretrain/OLMo-core/src/olmo_core/nn/ldm/backends/fast`): the windowed state with a taped backward.
 `LDMState(mode="chunk")` drives it from the Hugging Face model.
 
 ## Layout
@@ -110,5 +110,5 @@ the start state is zero. The residuals and the P of every edge from before its u
 the tapes.
 
 ## Benchmarking
-The paper's training-step, prefill and decode measurements are in `paper-experiments/throughput/`;
+The paper's training-step, prefill and decode measurements are in `legacy/paper-experiments/throughput/`;
 `benchmarks/ops/benchmark_ldm.py` times the three LDM modes.

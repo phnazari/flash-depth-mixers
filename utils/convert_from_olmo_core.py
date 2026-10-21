@@ -3,8 +3,8 @@
     python utils/convert_from_olmo_core.py --checkpoint checkpoints/released/400m-ldm/lr1e-3 \
         --output converted/400m-ldm
 
-The checkpoint is rebuilt as the OLMo-core model it was trained as (``pretrain/OLMo-core`` must be
-importable), so banked parameters are read through the modules that own them. Supported methods:
+The checkpoint is rebuilt as the OLMo-core model it was trained as (``legacy/pretrain/OLMo-core``
+must be importable: the ``legacy`` dependency group), so banked parameters are read through the modules that own them. Supported methods:
 LDM (any LDM backend's parameter layout), mHC and AttnRes (Block and Full).
 """
 
@@ -18,7 +18,7 @@ from pathlib import Path
 import torch
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-TOKENIZER = REPO_ROOT / "pretrain/OLMo-core/src/olmo_core/data/tokenizers/allenai_gpt-neox-olmo-dolma-v1_5.json"
+TOKENIZER = REPO_ROOT / "legacy/pretrain/OLMo-core/src/olmo_core/data/tokenizers/allenai_gpt-neox-olmo-dolma-v1_5.json"
 
 
 def load_olmo_core(checkpoint: str | Path):

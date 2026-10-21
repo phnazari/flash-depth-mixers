@@ -1,6 +1,6 @@
 """The converted Hugging Face models reproduce the paper's OLMo-core checkpoints.
 
-Needs the OLMo-core package of ``pretrain/OLMo-core`` and the released 400M and 1.5B checkpoints, downloaded
+Needs the OLMo-core package of ``legacy/pretrain/OLMo-core`` and the released 400M and 1.5B checkpoints, downloaded
 and converted as the README describes::
 
     hf download davidgonmar/depth-memory-400m-ldm --include "lr1e-3/*" --local-dir checkpoints/released/400m-ldm
