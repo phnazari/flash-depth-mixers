@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = "==3.11.*"
 resolution-markers = [
     "platform_machine == 'x86_64' and sys_platform == 'linux'",
@@ -7,8 +7,6 @@ resolution-markers = [
 supported-markers = [
     "platform_machine == 'x86_64' and sys_platform == 'linux'",
 ]
-
-[manifest]
 
 [[manifest.dependency-metadata]]
 name = "grouped-gemm"
@@ -21,6 +19,24 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d0/4f/d79676ab82f2e42fc3611618139f13a9c4c31d0cff4b486982047679a802/absl_py-2.5.0.tar.gz", hash = "sha256:0c996f25c0490700fadabe6351630f6111534fa0ae252cc6d2014ea3b141135f", size = 118119, upload-time = "2026-07-03T10:57:48.157Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/58/0a/a10b45aab35b175aded078a462dc8d0c698f5b13946e7cb0869097b78bb6/absl_py-2.5.0-py3-none-any.whl", hash = "sha256:0f17b89f2a4eaaedc4f28c622998aa690564b3012a396a4ffad0821007fe03ba", size = 137410, upload-time = "2026-07-03T10:57:46.735Z" },
+]
+
+[[package]]
+name = "accelerate"
+version = "1.15.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "huggingface-hub" },
+    { name = "numpy" },
+    { name = "packaging" },
+    { name = "psutil" },
+    { name = "pyyaml" },
+    { name = "safetensors" },
+    { name = "torch" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f5/b5/1d3ed029ac71d3f2961346829a268da923698e9fd63f218f78841f216bfd/accelerate-1.15.0.tar.gz", hash = "sha256:5654f8c5eaa0d4fa68b33e287a97765da6849bf6d51dcac874e73fbbddfb6134", size = 422615, upload-time = "2026-09-09T13:04:49.078Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8a/4c/34f0450479d01195027260da68d8a3880683f1640c3ca5adf64acb3185f1/accelerate-1.15.0-py3-none-any.whl", hash = "sha256:97eacca0b73e45cb867dbf8c5d5d4dc32219544300e0c8992c7334dc2ef33cec", size = 394295, upload-time = "2026-09-09T13:04:47.331Z" },
 ]
 
 [[package]]
@@ -514,9 +530,9 @@ wheels = [
 ]
 
 [[package]]
-name = "ldm"
-version = "0.1.0"
-source = { virtual = "." }
+name = "depth-mixer"
+source = { editable = "." }
+default-groups = ["dev", "eval"]
 dependencies = [
     { name = "ai2-olmo-core", extra = ["fla"] },
     { name = "cuda-python" },
@@ -545,6 +561,7 @@ dev = [
     { name = "ruff" },
 ]
 eval = [
+    { name = "accelerate" },
     { name = "lm-eval" },
 ]
 moe = [
@@ -579,7 +596,10 @@ dev = [
     { name = "pytest" },
     { name = "ruff" },
 ]
-eval = [{ name = "lm-eval", specifier = "==0.4.12" }]
+eval = [
+    { name = "accelerate", specifier = ">=1.0" },
+    { name = "lm-eval", specifier = "==0.4.12" },
+]
 moe = [{ name = "grouped-gemm", git = "https://github.com/tgale96/grouped_gemm.git?rev=f1429a3c44c98f7912aa4b00125144cdf4e7fdb2" }]
 
 [[package]]

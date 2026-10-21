@@ -1,7 +1,9 @@
 [project]
-name = "ldm"
-version = "0.1.0"
-description = "Linear Depth Memory (LDM): code for the paper \"Depth Memory\""
+name = "depth-mixer"
+dynamic = ["version"]
+description = "Depth mixers (LDM, mHC, AttnRes) with fused kernels and Hugging Face models, and the code of the paper \"Depth Memory\""
+readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.11,<3.12"
 dependencies = [
     "ai2-olmo-core[fla]",
@@ -31,6 +33,7 @@ dev = [
     "ruff",
 ]
 eval = [
+    "accelerate>=1.0",
     "lm-eval==0.4.12",
 ]
 # OLMo-core's MoE layers only. `grouped-gemm` is a CUDA source build that needs
@@ -40,8 +43,27 @@ moe = [
     "grouped-gemm",
 ]
 
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = { attr = "depth_mixer.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["depth_mixer*"]
+
+[tool.setuptools.package-data]
+"depth_mixer.ops.ldm.chunk" = ["tuned/*.json", "DESIGN.md"]
+"depth_mixer.ops.mhc.tile_kernels" = ["LICENSE", "VENDORED.md"]
+"depth_mixer.ops.mhc.tile_kernels.modeling.mhc.ops" = ["tuned/*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
 [tool.uv]
-package = false
+package = true
 default-groups = ["dev", "eval"]
 environments = [
     "sys_platform == 'linux' and platform_machine == 'x86_64'",
