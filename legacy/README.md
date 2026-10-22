@@ -105,9 +105,21 @@ bash paper-experiments/throughput/rounds.sh decode  1p7b b200 3
 See [paper-experiments/throughput/README.md](paper-experiments/throughput/README.md)
 for the benchmark setup.
 
+## Released checkpoints
+
+Native OLMo-core checkpoints are available in our [Hugging Face collection](https://huggingface.co/collections/davidgonmar/depth-memory-6ac5045a1bd8e798d2ed1392). Each model repository contains one folder per learning rate; its model card identifies the run selected in the paper.
+
+| Method | 400M | 1.5B |
+|---|---|---|
+| PreLN | [Download](https://huggingface.co/davidgonmar/depth-memory-400m-preln) | [Download](https://huggingface.co/davidgonmar/depth-memory-1.5b-preln) |
+| AttnRes (Full) | [Download](https://huggingface.co/davidgonmar/depth-memory-400m-attnres-full) | — |
+| AttnRes (Block) | [Download](https://huggingface.co/davidgonmar/depth-memory-400m-attnres-block) | [Download](https://huggingface.co/davidgonmar/depth-memory-1.5b-attnres-block) |
+| mHC | [Download](https://huggingface.co/davidgonmar/depth-memory-400m-mhc) | [Download](https://huggingface.co/davidgonmar/depth-memory-1.5b-mhc) |
+| LDM | [Download](https://huggingface.co/davidgonmar/depth-memory-400m-ldm) | [Download](https://huggingface.co/davidgonmar/depth-memory-1.5b-ldm) |
+| LDM, D_k = 4 | [Download](https://huggingface.co/davidgonmar/depth-memory-400m-ldm-dk4) | — |
+
 ## Evaluating a released checkpoint
 
-The released checkpoints are listed in the [top-level README](../README.md#released-checkpoints).
 Download one and evaluate it natively:
 
 ```bash
