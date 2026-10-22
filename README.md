@@ -1,4 +1,4 @@
-# Depth Mixer
+# Flash Depth Mixers
 
 Fused kernels and Hugging Face models for **depth mixers**: methods that replace the residual
 connection of a transformer across its layers. The layout follows
